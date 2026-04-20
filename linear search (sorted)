@@ -1,1 +1,19 @@
+# 1. ask the user for the ID they want to find (e.g. DD_056)
+search_term = input("Enter the ID to search for: ")
+found = False 
+
+# 2. start a loop to check every row in my hotdog_data list one by one
+for row in hotdog_data:
+    
+    # grab the ID from the first column (index 0) of the current row
+    current_value = row[0]
+    
+    # 3. check if the ID in this row matches what the user typed
+    if current_value == search_term:
+        print(f"Match found: {row}")
+        found = True
+
+# 4. after checking the whole list, if 'found' is still False, tell the user
+if not found:
+    print("Item not found in the list.")
 
