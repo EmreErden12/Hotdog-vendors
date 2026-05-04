@@ -1,36 +1,71 @@
-# 1. load the data and swap columns so Brand is first
-with open('Hotdog.txt', 'r') as file:
-    for line in file:
-        items = line.strip().split(',')
-        if len(items) > 1:
-            # putting items[1] (Brand) at the front of a new list
-            # format: [Brand, ID, Date, Calories...]
-            cleaned_row = [items[1], items[0], items[2], items[3], items[4]]
-            hotdog_data.append(cleaned_row)
+hotdog_data = []
 
-hotdog_data.sort()
+# Load data
+try:
+    with open('Hotdog.txt', 'r') as file:
+        for line in file:
 
-# 3. setup variables
-search_term = input("Enter a brand to search for: ")
-low = 0
-high = len(hotdog_data) - 1
-result = None
+            # Split each line into list values
+            items = line.strip().split(',')
 
-# 4. standard Binary Search
-while low <= high:
-    mid = (low + high) // 2
-    
-    # since Brand is now at [0], this comparison works
-    if hotdog_data[mid][0] == search_term:
-        result = hotdog_data[mid]
-        break 
-    elif hotdog_data[mid][0] < search_term:
-        low = mid + 1
-    else:
-        high = mid - 1
+            # Check row has correct number of values
+            if len(items) == 7:
+                hotdog_data.append(items)
+            else:
+                print("Skipping invalid row:", items)
 
-# 5. output
-if result:
-    print(f"Found: {result}")
-else:
-    print("Brand not found.")
+except FileNotFoundError:
+    print("Error: file not found")
+
+
+# Binary search function
+def binary_search_brand(data, search_term):
+
+    # 1. Check if data exists
+    if len(data) == 0:
+        print("No data available")
+        return
+
+    # 2. Validate search input
+    if search_term is None or search_term.strip() == "":
+        print("Error: search term cannot be empty")
+        return
+
+    search_term = search_term.strip().lower()
+
+    # 3. Sort data by brand (important for binary search)
+    data.sort()
+
+    # 4. Set up binary search values
+    low = 0
+    high = len(data) - 1
+    found = False
+
+    # 5. Binary search loop
+    while low <= high:
+
+        mid = (low + high) // 2
+        current_value = data[mid][1].lower()
+
+        # Check if match found
+        if current_value == search_term:
+            print("Found:", data[mid])
+            found = True
+            break
+
+        # Move search range
+        elif current_value < search_term:
+            low = mid + 1
+        else:
+            high = mid - 1
+
+    # 6. If not found
+    if not found:
+        print("Brand not found")
+
+
+# Run search
+search = input("Enter brand to search: ")
+binary_search_brand(hotdog_data, search)
+
+
