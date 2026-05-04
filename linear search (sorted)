@@ -1,19 +1,63 @@
-# 1. ask the user for the ID they want to find (e.g. DD_056)
-search_term = input("Enter the ID to search for: ")
-found = False 
+hotdog_data = []
 
-# 2. start a loop to check every row in my hotdog_data list one by one
-for row in hotdog_data:
-    
-    # grab the ID from the first column (index 0) of the current row
-    current_value = row[0]
-    
-    # 3. check if the ID in this row matches what the user typed
-    if current_value == search_term:
-        print(f"Match found: {row}")
-        found = True
+# Load data
+try:
+    with open('Hotdog.txt', 'r') as file:
+        for line in file:
 
-# 4. after checking the whole list, if 'found' is still False, tell the user
-if not found:
-    print("Item not found in the list.")
+            # Split line into lis of values
+            items = line.strip().split(',')
+
+            # Basic validation: ensure correct number of fields
+            if len(items) == 7:
+                hotdog_data.append(items)
+            else:
+                print("Skipping invalid row:", items)
+
+except FileNotFoundError:
+    print("Error: Hotdog.txt file not found.")
+    hotdog_data = []
+
+
+# Libear search function
+def search_any(data, search_term=None):
+    """
+    Linear search through an unsorted list.
+    Checks all fields in each row.
+    Returns first match or None.
+    """
+
+    # Ask user if no search term provided
+    if search_term is None:
+        search_term = input("Enter value to search for: ")
+
+    # Validation
+    search_term = search_term.strip()
+
+    if search_term == "":
+        print("Error: search term cannot be empty.")
+        return None
+
+    search_term = search_term.lower()
+
+    # Search process
+    for row in data:
+
+        for item in row:
+
+            # Safe comparison (handles numbers + strings)
+            if search_term in str(item).lower():
+                return row
+
+    # If nothing found
+    print("No matching result found.")
+    return None
+
+
+# Run search
+result = search_any(hotdog_data)
+
+print("\nSEARCH RESULT")
+print(result)
+
 
