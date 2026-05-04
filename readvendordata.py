@@ -14,9 +14,3 @@ for i in (hotdog_data):
 
 # Example: Accessing the first item of the first row
 print(hotdog_data[0])
-
-
-
-
-
-
