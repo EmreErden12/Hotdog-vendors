@@ -1,77 +1,77 @@
+
 hotdog_data = []
 
-# Load data
+# Load data from file
 try:
     with open('Hotdog.txt', 'r') as file:
         for line in file:
 
-            # 1. Split line into list
+            # 1. remove newline and split by comma
             items = line.strip().split(',')
 
-            # 2. Validate row has correct number of columns
+            # validation: correct number of fields
             if len(items) == 7:
                 hotdog_data.append(items)
             else:
                 print("Skipping invalid row:", items)
 
 except FileNotFoundError:
-    print("Error: file not found")
+    print("Error: Hotdog.txt file not found.")
+    hotdog_data = []
 
+# Test: print data to check it loaded correctly
+for i in hotdog_data:
+    print(i)
 
-# Binary search
-def binary_search_brand(data, search_term):
+# Example: access first row safely
+if len(hotdog_data) > 0:
+    print(hotdog_data[0])
+else:
+    print("No data loaded.")
 
-    # 1. Check if data exists
-    if not data:
-        print("Error: no data loaded")
-        return
+# Quick Sort Function
+def quick_sort(data):
 
-    # 2. Validate search input
-    if search_term is None:
-        print("Error: no search term provided")
-        return
+    # validation: empty or single item list
+    if len(data) <= 1:
+        return data
 
-    search_term = search_term.strip()
+    # choose pivot (middle value)
+    pivot = data[len(data) // 2][1]
 
-    if search_term == "":
-        print("Error: search term cannot be empty")
-        return
+    left = []
+    middle = []
+    right = []
 
-    search_term = search_term.lower()
+    for row in data:
 
-    # 3. Sort data by brand (needed for binary search)
-    data.sort()
+        # safety check
+        if len(row) < 2:
+            continue
 
-    # 4. Set up binary search variables
-    low = 0
-    high = len(data) - 1
-    found = False
+        value = row[1]
 
-    # 5. Binary search loop
-    while low <= high:
+        if value < pivot:
+            left.append(row)
 
-        mid = (low + high) // 2
-        current_value = data[mid][1].lower()
+        elif value == pivot:
+            middle.append(row)
 
-        # 6. Check for match
-        if current_value == search_term:
-            print("Found:", data[mid])
-            found = True
-            break
-
-        # 7. Move search range
-        elif current_value < search_term:
-            low = mid + 1
         else:
-            high = mid - 1
+            right.append(row)
 
-    # 8. If not found
-    if not found:
-        print("Brand not found")
+    return quick_sort(left) + middle + quick_sort(right)
 
+# Run sort
+if len(hotdog_data) > 0:
 
-# Run search
-search = input("Enter brand to search: ")
-binary_search_brand(hotdog_data, search)
+    sorted_data = quick_sort(hotdog_data)
+
+    print("\n--- SORTED DATA (Quick Sort) ---")
+    for row in sorted_data:
+        print(row)
+
+else:
+    print("No data to sort.")
 
 
