@@ -1,7 +1,7 @@
 import time
 import copy
 
-#  number of runs for average timing 
+#  Number of runs for average timing 
 runs = 100
 
 print("\n--- SORT EFFICIENCY TEST ---")
@@ -13,7 +13,7 @@ start_time = time.perf_counter()
 
 for i in range(runs):
 
-    # copy data so each run starts fresh
+    # Copy data so each run starts fresh
     temp_data = copy.deepcopy(hotdog_data)
 
     bubble_sort_by_brand(temp_data)
@@ -29,7 +29,7 @@ start_time = time.perf_counter()
 
 for i in range(runs):
 
-    # copy data so each run starts fresh
+    # Copy data so each run starts fresh
     temp_data = copy.deepcopy(hotdog_data)
 
     quick_sort(temp_data)
