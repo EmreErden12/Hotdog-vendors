@@ -5,7 +5,7 @@ try:
     with open('Hotdog.txt', 'r') as file:
         for line in file:
 
-            # remove newline and split by comma
+            # remove newline character and split by comma
             items = line.strip().split(',')
 
             # validation: check correct number of fields
@@ -32,7 +32,7 @@ else:
 
 search_term = input("Enter the name or value to search for: ")
 
-# validation: remove spaces
+# Validation: remove spaces
 search_term = search_term.strip()
 
 if search_term == "":
