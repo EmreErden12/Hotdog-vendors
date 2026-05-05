@@ -6,10 +6,10 @@ try:
     with open('Hotdog.txt', 'r') as file:
         for line in file:
 
-            # 1. remove newline and split by comma
+            # 1. Remove newline and split by comma
             items = line.strip().split(',')
 
-            # validation: correct number of fields
+            # Validation: correct number of fields
             if len(items) == 7:
                 hotdog_data.append(items)
             else:
@@ -32,11 +32,11 @@ else:
 # Quick Sort Function
 def quick_sort(data):
 
-    # validation: empty or single item list
+    # Validation: empty or single item list
     if len(data) <= 1:
         return data
 
-    # choose pivot (middle value)
+    # Choose pivot (middle value)
     pivot = data[len(data) // 2][1]
 
     left = []
@@ -45,7 +45,7 @@ def quick_sort(data):
 
     for row in data:
 
-        # safety check
+        # Safety check
         if len(row) < 2:
             continue
 
