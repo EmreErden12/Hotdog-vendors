@@ -23,12 +23,12 @@ print("--- Original Data ---")
 for row in hotdog_data:
     print(row)
 
-# Example chek (only if data exists)
+# Example check (only if data exists)
 if hotdog_data:
     print("\nFirst row:", hotdog_data[0])
 
 
-# BUBBBLE SORT FUNCTION
+# BUBBLE SORT FUNCTION
 def bubble_sort_by_brand(data):
 
     # 1. Check if data exists
