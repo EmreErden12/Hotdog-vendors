@@ -124,7 +124,7 @@ def analyse_data(data):
             least_ketchup = ketchup_total
             least_ketchup_vendor = vendor
 
-        # Find vendor using the most ketchu overall
+        # Find vendor using the most ketchup overall
         if ketchup_total > most_ketchup:
             most_ketchup = ketchup_total
             most_ketchup_vendor = vendor
@@ -135,7 +135,7 @@ def analyse_data(data):
 
     for vendor in vendors:
 
-        # Compare onion usage betwee vendors
+        # Compare onion usage between vendors
         if vendors[vendor]["onions"] > most_onions:
             most_onions = vendors[vendor]["onions"]
             most_onions_vendor = vendor
@@ -165,7 +165,7 @@ def analyse_data(data):
             worst_ratio = ratio
             least_efficient_vendor = vendor
 
-    # FINAL OUTPUT SECTIO
+    # FINAL OUTPUT SECTIOn
     print("\nHOTDOG ANALYSIS REPORT\n")
 
     print("1. Most Productive Vendor:", most_productive)
