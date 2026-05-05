@@ -5,7 +5,7 @@ try:
     with open('Hotdog.txt', 'r') as file:
         for line in file:
 
-            # Split line into lis of values
+            # Split line into list of values
             items = line.strip().split(',')
 
             # Basic validation: ensure correct number of fields
@@ -19,7 +19,7 @@ except FileNotFoundError:
     hotdog_data = []
 
 
-# Libear search function
+# Linear search function
 def search_any(data, search_term=None):
     """
     Linear search through an unsorted list.
