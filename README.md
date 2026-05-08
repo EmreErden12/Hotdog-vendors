@@ -3,4 +3,4 @@ Coursework for computing.
 Code will be improved in the final few days.
 All old and more inefficient code likely to be deleted.
 Most of the code is likely to be uploaded later, as I will continue improving it in Python before submission. If not, I will upload it once it is completed.
-Some code may not work on their own, as they need to be used with other code to work properly such as the sort efficiency code needing to be combined with the sort programs i made.
+Some components, such as efficiency testing, are designed to work alongside the search and sorting functions. These are used to measure performance rather than operate as standalone features.
