@@ -41,7 +41,7 @@ else:
 
     found = False
 
-    # search through dataset
+    # Search through dataset
     for row in hotdog_data:
 
         if search_term in row:
