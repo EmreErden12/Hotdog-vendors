@@ -1,5 +1,5 @@
 # Hotdog-vendors
 Coursework for computing.
-CODE LIKELY TO BE ALL IMPROVED IN THE FINAL FEW DAYS FOR IMPROVEMENTS.
+Code will be improved in the final few days.
 All old and less inefficient code likely to be deleted.
-MOST CODE LIKELY TO BE UPLOADED LATE AS I WILL BE IMPROVING THEM ON PYTHON AS POSSIBLE BEFORE UPLOADING. IF NOT THEN I WILL UPLOAD IT WHEN ITS DONE
+Most of the code is likely to be uploaded later, as I will continue improving it in Python before submission. If not, I will upload it once it is completed
