@@ -5,10 +5,10 @@ try:
     with open('Hotdog.txt', 'r') as file:
         for line in file:
 
-            # remove newline character and split by comma
+            # Remove newline character and split by comma
             items = line.strip().split(',')
 
-            # validation: check correct number of fields
+            # Validation: check correct number of fields
             if len(items) == 7:
                 hotdog_data.append(items)
             else:
