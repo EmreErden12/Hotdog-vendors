@@ -108,7 +108,7 @@ def quick_sort(data):
     return quick_sort(left) + middle + quick_sort(right)
 
 
-# Bubble sort function (kept as requested)
+# Bubble sort function
 def bubble_sort(data):
 
     n = len(data)
