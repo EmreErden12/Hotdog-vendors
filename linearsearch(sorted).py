@@ -45,7 +45,7 @@ def search_any(data, search_term=None):
 
         for item in row:
 
-            # Safe comparison (handles numbers + strings)
+            # Makes sure numbers and text can be compared without errors
             if search_term in str(item).lower():
                 return row
 
