@@ -54,7 +54,7 @@ def binary_search(data, search_term):
     if search_term == "":
         return None
 
-    # IMPORTANT FIX: do NOT modify original data
+    # Unmodified original data
     sorted_data = sorted(data, key=lambda row: row[1].lower())
 
     low = 0
