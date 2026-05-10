@@ -7,7 +7,7 @@ runs = 100
 print("\n--- SORT EFFICIENCY TEST ---")
 
 
-# 1. BUBBLE SORT TIMING
+# 1. Bubble sort timing
 
 start_time = time.perf_counter()
 
@@ -23,7 +23,7 @@ end_time = time.perf_counter()
 bubble_time = (end_time - start_time) / runs
 
 
-# 2. QUICK SORT TIMING
+# 2. Quick sort timing
 
 start_time = time.perf_counter()
 
