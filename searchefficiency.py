@@ -1,6 +1,6 @@
 import time
 
-# TEST CASES (multiple searches)
+# Test cases (multiple searches)
 test_cases = ["Dolly Dogs", "Korner Kart", "Emre Dogs"]
 
 runs = 10000
@@ -8,13 +8,13 @@ runs = 10000
 print("\n--- SEARCH EFFICIENCY TEST ---")
 
 
-# LOOP THROUGH EACH TEST CASE
+# Loop through each test case
 for search_term in test_cases:
 
     print("\nTesting:", search_term)
 
 
-    # LINEAR SEARCH TIMING
+    # Linear search timing
     start_time = time.perf_counter()
 
     for i in range(runs):
@@ -25,7 +25,7 @@ for search_term in test_cases:
     linear_time = (end_time - start_time) / runs
 
 
-    # BINARY SEARCH TIMING
+    # Binary search timing
     start_time = time.perf_counter()
 
     for i in range(runs):
@@ -36,6 +36,6 @@ for search_term in test_cases:
     binary_time = (end_time - start_time) / runs
 
 
-    # OUTPUT RESULTS
+    # Output results
     print("Linear Search Time:", linear_time)
     print("Binary Search Time:", binary_time)
