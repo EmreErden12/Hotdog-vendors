@@ -1,71 +1,74 @@
+# Load data from file
 hotdog_data = []
 
-# Load data
 try:
     with open('Hotdog.txt', 'r') as file:
         for line in file:
 
-            # Split each line into list values
+            # Split line into list values
             items = line.strip().split(',')
 
-            # Check row has correct number of values
+            # Validate correct number of fields
             if len(items) == 7:
                 hotdog_data.append(items)
             else:
                 print("Skipping invalid row:", items)
 
 except FileNotFoundError:
-    print("Error: file not found")
+    print("Error: Hotdog.txt file not found")
+    hotdog_data = []
+
+
+# Sort data by vendor name before binary search
+hotdog_data = sorted(hotdog_data, key=lambda row: row[1].lower())
 
 
 # Binary search function
 def binary_search_brand(data, search_term):
 
-    # 1. Check if data exists
+    # Check if data exists
     if len(data) == 0:
         print("No data available")
-        return
+        return None
 
-    # 2. Validate search input
-    if search_term is None or search_term.strip() == "":
-        print("Error: search term cannot be empty")
-        return
-
+    # Validate input
     search_term = search_term.strip().lower()
 
-    # 3. Sort data by brand (important for binary search)
-    data.sort()
+    if search_term == "":
+        print("Error: search term cannot be empty")
+        return None
 
-    # 4. Set up binary search values
+    # Set search range
     low = 0
     high = len(data) - 1
-    found = False
 
-    # 5. Binary search loop
+    # Binary search loop
     while low <= high:
 
         mid = (low + high) // 2
         current_value = data[mid][1].lower()
 
-        # Check if match found
         if current_value == search_term:
-            print("Found:", data[mid])
-            found = True
-            break
+            return data[mid]
 
-        # Move search range
         elif current_value < search_term:
             low = mid + 1
+
         else:
             high = mid - 1
 
-    # 6. If not found
-    if not found:
-        print("Brand not found")
+    return None
 
+
+# User input
+search_term = input("Enter a vendor name to search: ")
 
 # Run search
-search = input("Enter brand to search: ")
-binary_search_brand(hotdog_data, search)
+result = binary_search_brand(hotdog_data, search_term)
 
+# Output result
+if result:
+    print("\nMatch found:", result)
+else:
+    print("\nVendor not found")
 
